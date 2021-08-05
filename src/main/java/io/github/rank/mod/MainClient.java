@@ -1,6 +1,8 @@
 package io.github.rank.mod;
 
+import io.github.rank.mod.screens.MainScreen;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.client.MinecraftClient;
 
 public class MainClient implements ModInitializer {
     public static final String MOD_NAME = "RANK Client";
