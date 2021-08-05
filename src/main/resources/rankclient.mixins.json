@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.rank.mod.mixins",
+  "compatibilityLevel": "JAVA_16",
+  "mixins": [
+    "ZoomMixin",
+    "ZoomInOutMixin",
+    "ZoomMouseMixin",
+    "PerspectiveCameraMixin",
+    "PerspectiveMouseMixin",
+    "MouseSensitiveMixin",
+    "MouseSensitiveScrollCancelMixin"
+  ],
+  "client": [
+    "ClientMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

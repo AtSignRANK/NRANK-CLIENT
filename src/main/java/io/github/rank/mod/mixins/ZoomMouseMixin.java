@@ -1,0 +1,17 @@
+package io.github.rank.mod.mixins;
+
+import io.github.rank.mod.ZoomMod;
+
+import net.minecraft.client.Mouse;
+
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+@Mixin(value = Mouse.class)
+public class ZoomMouseMixin {
+    @Inject(at = {@At("RETURN")}, method = {"onMouseScroll(JDD)V"})
+    private void onOnMouseScroll(long long_1, double double_1, double double_2, CallbackInfo ci)
+    { ZoomMod.INSTANCE.onMouseScroll(double_2); }
+}
