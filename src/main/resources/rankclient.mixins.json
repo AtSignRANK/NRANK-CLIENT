@@ -10,7 +10,8 @@
     "PerspectiveCameraMixin",
     "PerspectiveMouseMixin",
     "MouseSensitiveMixin",
-    "MouseSensitiveScrollCancelMixin"
+    "MouseSensitiveScrollCancelMixin",
+    "MainScreenMixin"
   ],
   "client": [
     "ClientMixin"
