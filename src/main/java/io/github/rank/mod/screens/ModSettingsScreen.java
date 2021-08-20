@@ -1,5 +1,8 @@
 package io.github.rank.mod.screens;
 
+import io.github.rank.mod.PerspectiveMod;
+import io.github.rank.mod.PerspectiveModConfig;
+import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
@@ -12,21 +15,24 @@ public class ModSettingsScreen extends Screen {
     private final Screen mainScreen;
     private boolean isSaved = true;
 
-    public boolean perspectiveHold = false;
-
     public ModSettingsScreen(Screen parentScreen) { super(Text.of("rankclient.modsettings")); this.mainScreen = parentScreen; }
 
     @Override
     public void init() {
         super.init();
 
-        ButtonWidget perspective = new ButtonWidget(80, 20, 80, 20, getTextBoolean("Perspective",
-                perspectiveHold), (button) -> perspectiveHold = turnBoolean(perspectiveHold, "Perspective", button));
+//        ButtonWidget perspective = new ButtonWidget(80, 20, 80, 20, getTextBoolean("Perspective",
+//                PerspectiveMod.INSTANCE.isHeldMod), (button) -> PerspectiveMod.INSTANCE.isHeldMod = turnBoolean(PerspectiveMod.INSTANCE.isHeldMod,
+//                "Perspective", button));
+        ButtonWidget perspective = new ButtonWidget(80, 20, 120, 20, getTextBoolean("Perspective",
+                AutoConfig.getConfigHolder(PerspectiveModConfig.class).getConfig().main.holdMode), (button) ->
+                AutoConfig.getConfigHolder(PerspectiveModConfig.class).getConfig().main.holdMode =
+                turnBoolean(AutoConfig.getConfigHolder(PerspectiveModConfig.class).getConfig().main.holdMode,"Perspective", button));
         addDrawableChild(perspective);
 
 
 
-        ButtonWidget save = new ButtonWidget(this.width / 2 + 10, this.height - 40, 80, 20, Text.of("Save"), (button) ->
+        ButtonWidget save = new ButtonWidget(this.width / 2 + 10, this.height - 40, 120, 20, Text.of("Save"), (button) ->
                 isSaved = true);
         addDrawableChild(save);
     }

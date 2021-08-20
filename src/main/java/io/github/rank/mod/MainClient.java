@@ -1,6 +1,13 @@
 package io.github.rank.mod;
 
+import de.jcm.discordgamesdk.Core;
+import de.jcm.discordgamesdk.CreateParams;
+import de.jcm.discordgamesdk.activity.Activity;
+
 import net.fabricmc.api.ModInitializer;
+
+import java.io.File;
+import java.time.Instant;
 
 public class MainClient implements ModInitializer {
     public static final String MOD_NAME = "RANK Client";
@@ -19,5 +26,7 @@ public class MainClient implements ModInitializer {
         PerspectiveMod.INSTANCE.initialize();
 
         MouseSensitiveMod.INSTANCE.initialize();
+
+        GamingSettings.INSTANCE.initialize();
     }
 }

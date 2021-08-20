@@ -16,9 +16,9 @@ public enum PerspectiveMod {
 
     private KeyBinding perspectiveKey;
 
-    private boolean held = false;
-
     public boolean pressing = false;
+
+    private boolean held = false;
 
     public float cameraPitch;
     public float cameraYaw;
@@ -60,9 +60,9 @@ public enum PerspectiveMod {
                     MinecraftClient.getInstance().options.setPerspective(Perspective.FIRST_PERSON);
                 }
 
-                if (this.pressing && MinecraftClient.getInstance().options.getPerspective() != Perspective.THIRD_PERSON_BACK) this.pressing = false;
+                if (this.pressing && MinecraftClient.getInstance().options.getPerspective() != Perspective.THIRD_PERSON_BACK)
+                    this.pressing = false;
             }
         });
     }
-
-    public KeyBinding getPerspectiveKey() { return perspectiveKey; }}
+}

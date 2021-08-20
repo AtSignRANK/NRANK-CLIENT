@@ -1,9 +1,5 @@
-# Fabric Example Mod
+# RANK CLIENT 1.17.1
+- Made By @RANK (AtSignRANK)
 
-## Setup
-
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
-
-## License
-
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+## Fabric Mod Client.
+<a href="http://fabricmc.net">@RANK</a>
