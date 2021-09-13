@@ -21,11 +21,10 @@ public class PerspectiveModConfig extends PartitioningSerializer.GlobalData {
 
     @Config(name = "main")
     public static class CategoryMain implements ConfigData {
+        public boolean isOn = false;
         public boolean holdMode = false;
     }
 
-    // https://github.com/shedaniel/RoughlyEnoughItems/blob/3.x/src/main/java/me/shedaniel/rei/impl/ConfigManagerImpl.java
-    // using this just to change localization strings apposed to using it for an extra button like blanket does
     @SuppressWarnings("deprecation")
     public static Screen getConfigScreen(Screen parent) {
         try {

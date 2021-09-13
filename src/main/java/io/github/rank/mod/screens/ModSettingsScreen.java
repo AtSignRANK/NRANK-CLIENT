@@ -24,11 +24,17 @@ public class ModSettingsScreen extends Screen {
 //        ButtonWidget perspective = new ButtonWidget(80, 20, 80, 20, getTextBoolean("Perspective",
 //                PerspectiveMod.INSTANCE.isHeldMod), (button) -> PerspectiveMod.INSTANCE.isHeldMod = turnBoolean(PerspectiveMod.INSTANCE.isHeldMod,
 //                "Perspective", button));
-        ButtonWidget perspective = new ButtonWidget(80, 20, 120, 20, getTextBoolean("Perspective",
-                AutoConfig.getConfigHolder(PerspectiveModConfig.class).getConfig().main.holdMode), (button) ->
+        ButtonWidget perspectiveod = new ButtonWidget(80, 20, 120, 20, getTextBoolean("Perspective",
+                AutoConfig.getConfigHolder(PerspectiveModConfig.class).getConfig().main.isOn, new String[]{ "ON", "OFF" }), (button) ->
+                AutoConfig.getConfigHolder(PerspectiveModConfig.class).getConfig().main.isOn =
+                        turnBoolean(AutoConfig.getConfigHolder(PerspectiveModConfig.class).getConfig().main.isOn,"Perspective", button, new String[]{ "ON", "OFF" }));
+        addDrawableChild(perspectiveod);
+
+        ButtonWidget perspectiveth = new ButtonWidget(220, 20, 120, 20, getTextBoolean("Perspective",
+                AutoConfig.getConfigHolder(PerspectiveModConfig.class).getConfig().main.holdMode, new String[]{ "TOGGLE", "HOLD" }), (button) ->
                 AutoConfig.getConfigHolder(PerspectiveModConfig.class).getConfig().main.holdMode =
-                turnBoolean(AutoConfig.getConfigHolder(PerspectiveModConfig.class).getConfig().main.holdMode,"Perspective", button));
-        addDrawableChild(perspective);
+                turnBoolean(AutoConfig.getConfigHolder(PerspectiveModConfig.class).getConfig().main.holdMode,"Perspective", button, new String[]{ "TOGGLE", "HOLD" }));
+        addDrawableChild(perspectiveth);
 
 
 
@@ -48,14 +54,13 @@ public class ModSettingsScreen extends Screen {
 
     private int boolInt(boolean bool) { if (bool) return 1; return 0; }
 
-    private boolean turnBoolean(boolean bool, String text, ButtonWidget buttonWidget) {
+    private boolean turnBoolean(boolean bool, String text, ButtonWidget buttonWidget, String[] boolText) {
         isSaved = false;
-        buttonWidget.setMessage(getTextBoolean(text, !bool));
+        buttonWidget.setMessage(getTextBoolean(text, !bool, boolText));
         return !bool;
     }
 
-    private Text getTextBoolean(String text, boolean bool) {
-        String[] boolText = new String[]{ "OFF", "ON" };
+    private Text getTextBoolean(String text, boolean bool, String[] boolText) {
         return Text.of(text + " : " + boolText[boolInt(bool)]);
     }
 }

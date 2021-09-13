@@ -34,7 +34,8 @@ public enum PerspectiveMod {
         KeyBindingHelper.registerKeyBinding(perspectiveKey);
 
         ClientTickEvents.START_CLIENT_TICK.register(e -> {
-            if (MinecraftClient.getInstance().player != null) {
+            if (MinecraftClient.getInstance().player != null
+                    && AutoConfig.getConfigHolder(PerspectiveModConfig.class).getConfig().main.isOn) {
                 if (AutoConfig.getConfigHolder(PerspectiveModConfig.class).getConfig().main.holdMode) {
                     this.pressing = perspectiveKey.isPressed();
 
